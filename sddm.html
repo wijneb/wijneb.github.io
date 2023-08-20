@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head></head><body>
+<br># awk -f html sddmtxt > sddm.html
+<br>
+<br>SDDM, or Simple Desktop Display Manager, is a display manager for X11 and Wayland 
+<br>aiming to be fast, simple and beautiful. It is the recommended display manager for 
+<br>the KDE Plasma and LXQt desktop environments.
+<br>
+<br># apk add sddm xorg-server-xephyr
+<br>
+<br>Test the service to see if it launches and works, then enable the service to launch at boot:
+<br># rc-service sddm start
+<br>(if it works)
+<br># rc-update add sddm
+<br>
+<br>Themes for SDDM are located in /usr/share/sddm/themes/.
+<br>Many themes can be found on GitHub under the the sddm-theme topic.
+<br>Copy a new theme folder to /usr/share/sddm/themes/ 
+<br>and activate it by changing Current= to the name of the folder.
+<br>Example. Given a folder containing a theme, my-new-theme.
+<br>Test your theme:
+<br>$ sddm-greeter --test-mode --theme my-new-theme/
+<br>If it looks as desire, copy it to the system themes folder:
+<br># cp -r my-new-theme/ /usr/share/sddm/themes/
+<br>
+<br>Then set the new theme in /etc/sddm.conf
+<br>Contents of /etc/sddm.conf
+<br>...
+<br>[Theme]
+<br>Current="current_theme" (change to "new_theme")
+<br>...
+<br>
+<br>Face icon / Avatar
+<br>The default (fallback) theme, as well as other themes, can show an avatar on the login screen.
+<br>This avatar can be set by renaming the desired image to ~/.face.icon
+<br>
+<br>
+<br>
+</body></html>
