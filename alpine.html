@@ -26,13 +26,13 @@
 <br>
 <br>/usr/share/backgrounds  # wallpaper locatie
 <br>
-<br># dwm opstart file (.xinitrc in root ~ en bw~)
+<br># openbox opstart file (.xinitrc in root ~ en bw~)
 <br># wel of niet met & erachter? en exec er voor?
 <br>
 <br>.xinitrc   
 <br>xrandr -s 1360x768 
 <br>feh --bg-scale '/home/bw/Downloads/alps2.jpg' 
-<br>exec dwm 
+<br>exec openbox 
 <br>if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then 
 <br>    eval `dbus-launch --sh-syntax` 
 <br>fi 
