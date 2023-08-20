@@ -1,0 +1,61 @@
+<html><head></head><body>
+<br># awk -f html dwmtxt > dwm.html
+<br>
+<br>Installing dwm window manager from binary repository
+<br># apk add dwm dmenu st
+<br>
+<br>Installing dwm window manager from binary (from source)
+<br>The command to install the dependencies:
+<br># apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses 
+<br>dbus-x11 firefox-esr adwaita-gtk2-theme adwaita-icon-theme ttf-dejavu
+<br>
+<br>Installing suckless tools dwm, dmenu, and st from source
+<br>Change to the /tmp directory.
+<br>$ cd /tmp
+<br>then execute:
+<br># git clone https://git.suckless.org/dwm
+<br>Once downloaded, go to the dwm directory
+<br># cd dwm
+<br>To install, run:
+<br># make clean install
+<br>
+<br>Next, go up one directory level
+<br># cd ..
+<br>to install dmenu:
+<br># git clone https://git.suckless.org/dmenu
+<br># cd dmenu
+<br># make clean install
+<br>
+<br>Finally, go up one more directory level
+<br># cd ..
+<br>to install st:
+<br># git clone https://git.suckless.org/st
+<br># cd st
+<br># make clean install
+<br>
+<br>Setting up your profile
+<br>Change to your home directory:
+<br>$ cd /home/<yourusername>
+<br>Create .xinitrc:
+<br>$ vi .xinitrc
+<br>Add this line:
+<br>exec dwm
+<br>
+<br>Next, create .profile.:
+<br>$ vi .profile
+<br>Add this line:
+<br>startx
+<br>
+<br>Note: If you install additional programs that call your `$SHELL` 
+<br>with the POSIX `-l` login flag, you'll need to make launching `startx` conditional, 
+<br>otherwise X will attempt to launch every time your shell is called with the login flag.
+<br>
+<br>Contents of ~/.profile
+<br>if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then
+<br>    startx
+<br>fi
+<br>
+<br>Log out or reboot. dwm will run the next time you log in. 
+<br>Press Alt+p to launch dmenu. Type firefox then press enter. 
+<br>Firefox will load and run 
+</body></html>
