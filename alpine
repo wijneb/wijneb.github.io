@@ -1,0 +1,42 @@
+<html><head></head><body>
+<br># awk -f html alpinetxt > alpine
+<br>
+<br># Font vergroting (na setup-alpine): 
+<br>apk add terminus-font terminus-font-doc  
+<br>edit /etc/conf.d/consolefont and set your font, I used "ter-132n.psf.gz"  
+<br>rc-update add consolefont boot  
+<br>
+<br># of (niet getest)
+<br>setfont /usr/share/consolefonts/ter-132n.psf.gz`
+<br> 
+<br>apk add doas 
+<br>nano /etc/conf.d/doas.conf 
+<br>permit persist :bw as root 
+<br>
+<br>apk add 
+<br>midori mousepad xfce4-terminal menumaker xrandr 
+<br>pcmanfm feh git curl lynx tint2 nitrogen htop 
+<br>unzip termite xterm xarchiver lxappearance obconf 
+<br>
+<br>#menumaker exec:
+<br>mmaker openbox -f -t xterm
+<br>
+<br>apk add gnome-backgrounds   
+<br>
+<br>/usr/share/backgrounds  # wallpaper locatie
+<br>
+<br># dwm opstart file (.xinitrc in root ~ en bw~)
+<br># wel of niet met & erachter? en exec er voor?
+<br>
+<br>.xinitrc   
+<br>xrandr -s 1360x768 
+<br>feh --bg-scale '/home/bw/Downloads/alps2.jpg' 
+<br>exec dwm 
+<br>if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then 
+<br>    eval `dbus-launch --sh-syntax` 
+<br>fi 
+<br>
+<br>git clone https://gitlab.com/dwt1/dotfiles
+<br>
+<br>
+</body></html>
