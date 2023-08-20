@@ -1,0 +1,48 @@
+<html><head></head><body>
+<br># Openbox Initial setup
+<br>Start by booting Alpine 
+<br>Enable Community Repository
+<br>We need the Community Repository available for access to the Openbox packages.
+<br>
+<br>Install the basic packages for a minimal installation:
+<br># apk add openbox xterm font-terminus
+<br>
+<br>xterm is needed so you have a way to access the terminal in X. 
+<br>There are alternatives but this is the classic. 
+<br>Terminus is needed because without any fonts, you will not be able to see any text in Openbox.
+<br>
+<br>On most systems, xorg should be able to auto-detect all devices. 
+<br>Install the base xorg packages by running:
+<br># setup-xorg-base
+<br>
+<br>Configure user with #apk adduser
+<br>To make Xorg work as normal user you need to add user to these groups: video, input.
+<br># addgroup <username> input
+<br># addgroup <username> video
+<br>
+<br>acpid
+<br>If you installed your Alpine Linux as a VirtualBox or VMWare guest, 
+<br>you might find it handy to be able execute an ACPI shutdown.
+<br># rc-update add acpid
+<br>
+<br>Set Openbox as the default WM
+<br>$ echo 'exec openbox-session' >> ~/.xinitrc
+<br>Copy the config files to your home folder
+<br>$ mkdir ~/.config
+<br>$ cp -r /etc/xdg/openbox ~/.config
+<br>
+<br>Note: The default configuration is minimal and most menu options won't work 
+<br>unless you customize and/or install additional packages. 
+<br>
+<br>You can now edit the Openbox settings for your user by editing the files located in 
+<br>~/.config/openbox
+<br>
+<br>Start X
+<br>$ startx
+<br>
+<br>Note: The default Openbox menu (right-click on desktop) will have a lot of options 
+<br>that won't work because the required packages haven't been installed. 
+<br>XTerm will work if you added the package in the first step, and you can use that 
+<br>to add additional packages.
+<br>
+</body></html>
