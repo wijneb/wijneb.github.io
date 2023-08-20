@@ -1,6 +1,6 @@
 #!/usr/bin/awk -f 
 
-BEGIN { print "<html><head></head><body>" } 
+BEGIN { print "<!DOCTYPE html><html><head></head><body>" } 
 
 {print "<br>" $0}
 
