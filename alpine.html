@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html><head></head><body>
 <br># awk -f html alpinetxt > alpine.html
+<br>curl https://wijneb.github.io/alpine > alp.txt 
+<br>awk -F '>' '/<br>/{print "  " $2}' alp.txt > alp1.txt   
 <br>
 <br># Font vergroting (na setup-alpine): 
 <br>apk add terminus-font terminus-font-doc  
