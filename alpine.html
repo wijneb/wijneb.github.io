@@ -2,7 +2,7 @@
 <html><head></head><body>
 <br><xmp></xmp># awk -f html alpinetxt > alpine.html</xmp>
 <br>curl https://wijneb.github.io/alpine > alp.txt 
-<br><xmp>awk -F '>' '/<br>/{print "  " $2}' alp.txt > alp1.txt</xmp>   
+<br><pre>awk -F '>' '/&ltbr&gt/{print "  " $2}' alp.txt > alp1.txt</pre>   
 <br>
 <br># Font vergroting (na setup-alpine): 
 <br>apk add terminus-font terminus-font-doc  
