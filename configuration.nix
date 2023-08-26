@@ -47,10 +47,10 @@
   services.xserver.enable = true;
 
   # Enable the Cinnamon Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.windowManager.openbox.enable = true; 
-  services.xserver.desktopManager.lxqt.enable = true;
+  # services.xserver.desktopManager.lxqt.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -96,13 +96,13 @@
       ncdu
       htop
       gnome.gedit
-      tmux
-      geany
-      python310
-      nodejs
-      python310Packages.jupyterlab
-      nodePackages.ijavascript
-      vscode
+    #  tmux
+    #  geany
+    #  python310
+    #  nodejs
+    #  python310Packages.jupyterlab
+    #  nodePackages.ijavascript
+    #  vscode
     #  thunderbird
     ];
   };
