@@ -1,0 +1,11 @@
+super + x 
+  xterm -fa 'Liberation Mono:size=13:antialias=false' 
+
+super + {j,k,l}
+  {psc,tgl,tglc}
+
+super + {t,e,b,f,s,m)
+  {alacritty,mousepad,firefox,pcmanfm,xfce4-terminal,mousepad}
+
+super + shift + {r,q}
+  {bot,pof}
