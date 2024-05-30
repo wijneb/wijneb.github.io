@@ -9,4 +9,5 @@ curl -s $menu > .config/openbox/menu.xml
 curl -s $myrc > .config/openbox/rc.xml
 curl -s $mypic > .background.jpg
 echo $myfeh >> .config/openbox/autostart
-
+# curl -s wijneb.github.io/inintob.sh > .initob.sh
+# sh .initob.sh
