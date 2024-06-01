@@ -11,5 +11,5 @@ curl -s $mypic > .background.jpg
 echo $myfeh >> .config/openbox/autostart
 openbox --reconfigure
 feh --bg-scale '/home/bw/.background.jpg' 
-# curl -s wijneb.github.io/.initob.sh > /home/bw/.initob.sh
+# ADD https://raw.githubusercontent.com/wijneb/wijneb.github.io/main/.initob.sh /home/$RDP_USER/
 # sh /home/bw/.initob.sh
