@@ -6,8 +6,8 @@ mypic=$mygit"/backgrounds/main/backgrounds/0040.jpg"
 # curl -s xxx : is silent mode, no terminal comments
 curl -s $menu > .config/openbox/menu.xml
 curl -s $myrc > .config/openbox/rc.xml
-curl -s $mypic > .background.jpg
+curl -s $mypic > /home/.background.jpg
 openbox --reconfigure
-feh --bg-scale '.background.jpg' 
+feh --bg-scale '/home/.background.jpg' 
 # ADD https://raw.githubusercontent.com/wijneb/wijneb.github.io/main/.initob.sh /home/$RDP_USER/
 # sh /home/bw/.initob.sh
