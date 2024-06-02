@@ -8,6 +8,6 @@ curl -s $menu > .config/openbox/menu.xml
 curl -s $myrc > .config/openbox/rc.xml
 curl -s $mypic > .background.jpg
 openbox --reconfigure
-feh --bg-scale '/home/bw/.background.jpg' 
+feh --bg-scale '.background.jpg' 
 # ADD https://raw.githubusercontent.com/wijneb/wijneb.github.io/main/.initob.sh /home/$RDP_USER/
 # sh /home/bw/.initob.sh
