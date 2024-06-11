@@ -1,4 +1,4 @@
-
+alias @@ial='alias | grep incus'
 alias @@ix='incusstop'
 alias @@il='incus list  -c stnm4'
 alias @@ilc='incus list  -c stnm4 | grep CON'
