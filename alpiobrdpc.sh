@@ -22,13 +22,13 @@
 
 #getbackground
     curl -s $MYPIC/0056.jpg > /home/$UU/.paris.jpg
-    curl -s $MYPIC/0040.jpg > /home/$UU/.bridge.jpg
-    echo "feh --bg-scale '/home/$UU/.paris.jpg'" >> /$OB/autostart    
+    curl -s $MYPIC/0040.jpg > /home/$UU/.bridge.jpg  
 
 #obconf
     mkdir /home/$UU/.config; cp -r /etc/xdg/openbox /home/$UU/.config
     mv /$OB/menu.xml /$OB/menubu.xml; mv /$OB/rc.xml /$OB/rcbu.xml
     mv /mygithb/menubu.xml /$OB/menu.xml; mv /mygithb/rcbu.xml /$OB/rc.xml
+    echo "feh --bg-scale '/home/$UU/.paris.jpg'" >> /$OB/autostart      
 
 #sxhkd
     mkdir /home/$UU/.config/sxhkd 
