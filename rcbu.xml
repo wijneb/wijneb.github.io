@@ -319,7 +319,7 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-k">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
