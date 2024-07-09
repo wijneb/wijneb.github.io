@@ -1,0 +1,19 @@
+Dockerfile
+FROM alpine:edge
+
+RUN apk update; apk add git; \
+    git clone https://github.com/wijneb/wijneb.github.io.git; \
+    mv wijneb.github.io mygithb; \
+    sh /mygithb/alpiobrdpc.sh
+
+ENV TZ='Europe/Amsterdam'
+    CMD xrdp-sesman -k; xrdp -k; \
+    rm /var/run/xrdp-sesman.pid ; rm /var/run/xrdp.pid ; \
+    xrdp; --nodaemon; xrdp-sesman; --nodaemon; dbus; \   
+    sh
+
+# podman build -t alpix3 .
+# podman run -it alpix3
+# podman run -dt -p 3389:3389 --hostname alp --name alprdpx3 alpix3
+# podman exec -it alprdpx3 /bin/sh 
+# rdesktop -f -u bw -p abc localhost
