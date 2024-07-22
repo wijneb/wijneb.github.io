@@ -1,0 +1,23 @@
+FROM alpine:edge
+
+RUN apk update; apk add --no-cache curl tar
+
+RUN curl -sL "https://raw.githubusercontent.com/wijneb/\
+wijneb.github.io/main/rdpconfigs.tar.gz" | tar xz -C /tmp
+
+RUN sh /tmp/rdpconfigs/myObAlp.sh
+
+ENV TZ='Europe/Amsterdam'
+
+EXPOSE 3389
+
+CMD xrdp-sesman -k; xrdp -k; \
+    rm /var/run/xrdp-sesman.pid ; rm /var/run/xrdp.pid ; \
+    xrdp; --nodaemon; xrdp-sesman; --nodaemon; dbus; \   
+    sh
+
+# podman build -t aprdpx .
+# podman run -it aprdpx
+# podman run -dt -p 3389:3389 --hostname alp --name aprdpxc aprdpx
+# podman exec -it aprdpxc /bin/sh 
+# rdesktop -f -u bw -p abc localhost

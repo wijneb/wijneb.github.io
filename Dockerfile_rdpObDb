@@ -1,0 +1,29 @@
+FROM debian:trixie
+
+RUN apt-get update; apt-get install -y apt-utils curl
+
+RUN curl -sL "https://raw.githubusercontent.com/wijneb/\
+wijneb.github.io/main/rdpconfigs.tar.gz" | tar xz -C /tmp
+
+RUN sh /tmp/rdpconfigs/myObDeb.sh
+
+ENV TZ='Europe/Amsterdam'
+
+EXPOSE 3389
+
+CMD service xrdp stop; service dbus start; service xrdp start; bash
+
+# podman build -t dbrdp .
+# podman run -it dbrdp
+# podman run -dt -p 3389:3389 --hostname deb --name drdpc dbrdp
+# podman exec -it drdpc /bin/bash 
+# rdesktop -f -u bw -p abc localhost
+
+# FROM debian:trixie
+# RUN apt update; apt install -y xfce4 xrdp dbus-x11
+# RUN adduser xrdp ssl-cert
+# RUN apt install -y sudo nano fonts-font-awesome fonts-dejavu
+# RUN useradd -m bw -p $(openssl passwd abc); usermod -aG sudo bw
+# EXPOSE 3389
+# CMD service xrdp stop; service dbus start; service xrdp start; bash
+
