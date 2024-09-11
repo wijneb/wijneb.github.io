@@ -194,8 +194,8 @@ startsnapshotting() {
 checkboottime() {
     boot1=$((7*3600 + 38*60))                                    # reboot om 8 uur
     boot2=$(($boot1 + 16*60))                                    # window = 16 min
-    boottime="[ \$now -ge $boot1 ] && [ \$now -lt $boot2 ]"      # eerste 9 min bezig snaps
-    if eval $boottime; then sleep 1000; doas /sbin/reboot; fi    # wait until +9m outside window
+    boottime="[ \$now -ge $boot1 ] && [ \$now -lt $boot2 ]"      
+    if eval $boottime; then doas /sbin/reboot; fi                # reboot if in window
 }
 
 checkdpmsoff() {
