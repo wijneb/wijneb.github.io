@@ -37,7 +37,7 @@ mysunset() {
         if [ $dyn -gt 355 ]; then dyn=$dyn-355; fi  # 21 december kortste dag, offset=10dgn
     }
     sns() { dyn=$1; sns1; echo "scale=2; $avg-$amp*c(2*3.14*($dyn+10)/365)" | bc -l; }
-    sunset=$(sns $todaynr) ; sunset1=$(echo "scale=2; $result / 60" | bc -l) 
+    sunset=$(sns $todaynr) ; sunset1=$(echo "scale=2; $sunset / 60" | bc -l) 
 }   #sunset is sunset in minuts, sunset1=sunset in hrs
 
 
