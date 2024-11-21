@@ -5,45 +5,32 @@ myvar2=$2
 myvar3="
 \n This is simpling.sh. Two inputs are required, \n 1: the input file, (note that the input file needs to be converted first with the tolower function) and \n 2: one of the functions: tags, tagshort, cats, tolower, headers, deduplicate or simplawk. \n No or wrong input will show this text. \n Results will show in this terminal and can be redirected to a file using the bash redirect construct: > file. \n Input and output seperators are semicolons. \n Note that the simplawk output needs the first line awk shebang (#!/usr/bin/awk -f) to be added \n and at the end the actual functionality {\$11=myvar\"-\"\$6; print \$0} needs to be added. \n For terminal presentation the pipe \"|\" to the column -ts\";\" bash/awk functionality might be used, \n also pipe to sort -nr functionality might be used (n is numerical, r is reversed order). \n Grep functionality might also be used to grep a subset from the output. \n Here are some instructions that might be helpfull: \n
 sh simpling.sh \n
+sh simpling.sh ING2022e.csv tags \n
 sh simpling.sh ING2022e.csv headers \n
-sh simpling.sh ING2022e.csv tolower > L_ING2022.csv \n
-sh simpling.sh L_ING2022.csv tags > L_ING2022withTags.csv \n
-sh simpling.sh L_ING2022.csv cats | sort -n | column -ts\";\" \n
-sh simpling.sh L_ING2022.csv tagshort | grep belasting-af \n
-sh simpling.sh L_ING2022.csv tagshort | sort | column -ts\";\" | grep bij
-"
-sh simpling.sh \n
-sh simpling.sh ING2022e.csv headers \n
-sh simpling.sh ING2022e.csv tolower > L_ING2022.csv \n
-sh simpling.sh L_ING2022.csv tags > L_ING2022withTags.csv \n
-sh simpling.sh L_ING2022.csv cats | sort -n | column -ts\";\" \n
-sh simpling.sh L_ING2022.csv tagshort | grep belasting-af \n
-sh simpling.sh L_ING2022.csv tagshort | sort | column -ts\";\" | grep bij
+sh simpling.sh ING2022e.csv cats | sort -n | column -ts\";\" \n
+sh simpling.sh ING2022e.csv tagshort | sort -n | column -ts\";\" \n
+sh simpling.sh ING2022e.csv tagshort | sort | column -ts\";\" | grep bij
 "
 
-tags(){ awk -f LUsimple.awk $myvar1 ; }
-tagshort(){ tags | awk 'NR>1{print $11,$7,$1,$2}' FS=";" OFS=";" ; }
-tolower(){ awk '{print tolower($0)}' $myvar1 ; }
-simplawk(){ awk '{print "/"$1"/{myvar=\""$2"\"}"}' FS=";" $myvar1 ; }
-deduplicate(){ awk '!visited[$0]++' $myvar1 ; }
-
-headers(){ awk 'NR==1 { for (i=1; i<NF+1; i++) 
-                print "$"i, $i; exit}'  FS=";"  $myvar1 ; }
-
-cats(){ tags | awk 'NR>1 { myarr[$11]+=$7 
-                    if($6=="af") totaf+=$7; else totbij+=$7 }
-                    END{ for (key in myarr) print myarr[key], key  
-                         print totaf, "totaal-af" 
-                         print totbij, "totaal-bij" } ' \
-                    FS=";" OFS=";" ; }
+inpt()   { cat $myvar1 ; }
+mytags() { awk -f LUsimple.awk ; }
+dedupl() { awk '!visited[$0]++' ; }
+tolower(){ awk '{print tolower($0)}' ; }
+short()  { awk 'NR>1{print $11,$7,$1,$2}' FS=";" OFS=";" ; }
+simpl()  { awk '{print "/"$1"/{myvar=\""$2"\"}"}' FS=";" ; }
+header() { awk 'NR==1 { for (i=1; i<NF+1; i++) print "$"i, $i; exit }'  FS=";" ; }
+catcalc(){ awk 'NR>1 { myarr[$11]+=$7 
+                if($6=="af") totaf+=$7; else totbij+=$7 }
+                END{ for (key in myarr) print myarr[key], key  
+                   print totaf, "totaal-af" 
+                   print totbij, "totaal-bij" } ' \
+                FS=";" OFS=";" ; }
 
 case $myvar2 in
-  tags) tags ;;
-  cats) cats ;;
-  headers) headers ;;
-  tolower) tolower ;;
-  tagshort) tagshort ;;
-  simplawk) simplawk ;;
-  deduplicate) deduplicate ;;
-  *) echo $myvar3 ;;
+  headers)  inpt | tolower | header ;;
+  tags)     inpt | tolower | mytags ;;
+  cats)     inpt | tolower | mytags | catcalc ;;
+  tagshort) inpt | tolower | mytags | short ;;
+  simplawk) inpt | tolower | dedupl | simple ;;
+  *)        echo $myvar3 ;;
 esac
