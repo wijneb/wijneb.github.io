@@ -16,9 +16,7 @@ For terminal presentation the pipe \"|\" to the column -ts\";\" \n
 functionality or to sort -nr functionality might be used \n 
 (n is numerical, r is reversed order). \n 
 Grep functionality might also be used to grep a subset from the output. \n 
-LUsimple.awk is required for tags, cats and tagshort functions. \n 
-Here's how u make it: sh simpling.sh simple simplawk > LUsimple.awk \n 
-Here are some other example instructions that might be helpfull: \n 
+Here are some example instructions that might be helpfull: \n 
 (simple and ING2022e.csv are example input files) \n\n
 sh simpling.sh \n
 sh simpling.sh simple dedup \n
