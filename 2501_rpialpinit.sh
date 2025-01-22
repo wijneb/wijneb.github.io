@@ -37,6 +37,7 @@ doas rc-service lightdm start
 #/etc/doas.d/doas.conf 
 #=> permit nopass root cmd /sbin/reboot
 #=> permit nopass bw cmd /sbin/reboot
+#=> permit nopass <user> cmd /sbin/rc-service chronyd restart
 #in fun3.sh grep -i ^date
 #in fun3 HT HI en HE ipv 3x HI
 #toch venv, zonder werkt niet in cron
