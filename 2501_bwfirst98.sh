@@ -24,7 +24,7 @@ startdiashow()  { devnull pgrep -x feh || ( $(atruntime) && getWH &&
                   getDelays && startFeh && moveMouse && mymsg "started diashow from bwfirst98" && echo -n "$(mydate) " ) ; }
 
 nofeh()         { devnull pgrep -x feh && pkill -x feh ; }
-orstopdiashow() { devnull [ $(date +%-H) -eq 22 ] && [ $(date +%-M) -eq 0 ] && nofeh && dpmsoff ; return 0; }
+orstopdiashow() { devnull [ $(date +%-H) -eq 22 ] && [ $(date +%-M) -eq 0 ] && nofeh && xset +dpms ; return 0; }
 main()          { setEnv; checkreboot; checkprevious; startdiashow; orstopdiashow; }
 
 main
